@@ -79,3 +79,26 @@ body {
     margin-bottom: 8px;
     row-gap: 8px;
 }
+
+.remainingRows{
+    display: flex;
+    column-gap: 8px;
+    margin-top: 8px;
+    row-gap: 8px;
+}
+
+.numricKeys{
+    height: 64px;
+    width: 64px;
+    box-sizing: border-box;
+    display: block;
+    align-items: flex-start;
+}
+
+.operatorKeys{
+    height: 64px;
+    width: 64px;
+}
+#decimalPointKey, #equalsTo, #plus{
+    width: 64px;
+}
