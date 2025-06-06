@@ -71,3 +71,11 @@ body {
     width: 270px;
     height: 310px;
 }
+
+
+.firstRow{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    row-gap: 8px;
+}
