@@ -107,3 +107,8 @@ body {
 #deleteButton, #allClearButton{
     height: 64px;
 }
+
+#branding{
+    font-size: 34px;
+    display: block;
+    align-self: center;
