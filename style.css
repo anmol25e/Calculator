@@ -94,21 +94,27 @@ body {
     box-sizing: border-box;
     display: block;
     align-items: flex-start;
+    border-radius: 50px;
 }
 
 .operatorKeys{
     height: 64px;
     width: 64px;
+    border-radius: 50px;
 }
 #decimalPointKey, #equalsTo, #plus, #allClearButton, #deleteButton{
     width: 64px;
+    border-radius: 50px;
 }
 
 #deleteButton, #allClearButton{
     height: 64px;
+    border-radius: 50px;
+
 }
 
 #branding{
-    font-size: 34px;
+    font-size: 32px;
     display: block;
     align-self: center;
+}   
