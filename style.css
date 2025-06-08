@@ -58,7 +58,7 @@ body {
 
 .display{
     display: flex;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     height: 95px;
     width: 280px;
     justify-content: flex-end;  
@@ -118,3 +118,10 @@ body {
     display: block;
     align-self: center;
 }   
+
+#numDisplay{
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    padding-right: 3px;
+}
