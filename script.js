@@ -1,6 +1,8 @@
 let inputValue = '';
 let secondinputValue = '';
 let operatorValue = '';
+let hasError = false;
+
 
 
 
@@ -26,12 +28,18 @@ deleteBtn.addEventListener("click", removeBtn)
 
 
 function clearBtn() {
-    numberDisplay.innerText = '';
+  numberDisplay.innerText = '';
+  inputValue = '';
+  secondinputValue = '';
+  operatorValue = '';
+  hasError = false;
+
 }
 
 
 function removeBtn() {
-    numberDisplay.innerText = numberDisplay.innerText.slice(0, -1);
+  if(hasError) return;
+  numberDisplay.innerText = numberDisplay.innerText.slice(0, -1);
     
 }
 
@@ -43,6 +51,8 @@ numericKeys.forEach(function(button) {
 
 
 function displayNums(event) {
+  if(hasError) return;
+
   if(numberDisplay.innerText.length < 10){
     numberDisplay.innerText += event.target.textContent;
     
@@ -64,6 +74,7 @@ operatorButtons.forEach(function(button){
 
 
 function displayOperator(event){
+  if(hasError) return;
   if (inputValue !== "" && operatorValue === ""){
     operatorValue = event.target.textContent;
     numberDisplay.innerText = '';
@@ -81,26 +92,38 @@ function output() {
       let result;
 
       if (operatorValue === "+") {
-          result = num1 + num2;
+        result = num1 + num2;
       } else if (operatorValue === "-") {
-          result = num1 - num2;
+        result = num1 - num2;
       } else if (operatorValue === "*") {
-          result = Number((num1 * num2).toFixed(2));
+        result = num1 * num2;
       } else if (operatorValue === "/") {
-          result = num2 !== 0 ? Number((num1 / num2).toFixed(2)) : "Error";
+        result = num2 !== 0 ? num1 / num2 : "Error";
       }
+      
+      if (result === "Error") {
+        numberDisplay.innerText = "Error";
+        inputValue = "";
+        hasError = true;
+      } else {
+        let displayResult;
+        if (Number.isInteger(result)) {
+          displayResult = result.toString();
+        } else {
+          displayResult = result.toFixed(2);
+        }
 
-      numberDisplay.innerText = result;
+        if (displayResult.length > 10) {
+          displayResult = result.toExponential(2); // Use scientific notation
+        }
   
-
-    if(result !== "Error"){
-      inputValue = result.toString();
-    } else{
-      inputValue = '';
-    }
-
-    secondinputValue = '';
-    operatorValue = '';
+        numberDisplay.innerText = displayResult;
+        inputValue = result.toString(); // Save for next use
+        hasError = false;
+      }
+  
+      secondinputValue = "";
+      operatorValue = "";
 
   }
 }
