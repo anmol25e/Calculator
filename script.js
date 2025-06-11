@@ -26,6 +26,7 @@ decimalPoint.addEventListener("click", addDecimal)
 
 // you can only add one "decimal" in a calculation
 function addDecimal() {
+  if(hasError) return;
   if(!numberDisplay.innerText.includes(".")){
     numberDisplay.innerText += "."
   }
