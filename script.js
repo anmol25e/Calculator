@@ -1,10 +1,10 @@
-const number7 = document.getElementById("seven");
-const number8 = document.getElementById("eight");
 const numberDisplay = document.getElementById("numDisplay")
 const allClearBtn = document.getElementById("allClearButton")
 const deleteBtn = document.getElementById("deleteButton")
 const equalsTo = document.getElementById("equalsTo")
-const numricKeys = document.querySelectorAll(".numricKeys")
+
+
+const numericKeys = document.querySelectorAll(".numericKeys")
 const operatorButtons = document.querySelectorAll(".operatorKeys")
 
 // operator function
@@ -13,15 +13,11 @@ const divideBtn = document.getElementById("divide")
 
 
 
-// let numDisplay = '';
 
-number7.addEventListener("click", showSeven)
-number8.addEventListener("click", showEight)
+
 allClearBtn.addEventListener("click", clearBtn)
 deleteBtn.addEventListener("click", removeBtn)
-number7.a
-// operator function
-divideBtn.addEventListener("click", divide)
+
 
 function clearBtn() {
     numberDisplay.innerText = '';
@@ -32,6 +28,30 @@ function removeBtn() {
     numberDisplay.innerText = numberDisplay.innerText.slice(0, -1);
     
 }
+
+numericKeys.forEach(function(button) {
+  button.addEventListener("click", displayNums);
+});
+
+
+function displayNums(event) {
+  if(numberDisplay.innerText.length < 10){
+    numberDisplay.innerText += event.target.textContent
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,3 +143,5 @@ function showEight(){
     }
       
 }
+
+
