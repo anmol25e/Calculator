@@ -12,6 +12,7 @@ const numberDisplay = document.getElementById("numDisplay")
 const allClearBtn = document.getElementById("allClearButton")
 const deleteBtn = document.getElementById("deleteButton")
 const equalsTo = document.getElementById("equalsTo")
+const decimalPoint = document.getElementById("decimalPointKey")
 
 
 const numericKeys = document.querySelectorAll(".numericKeys")
@@ -20,12 +21,17 @@ const operatorButtons = document.querySelectorAll(".operatorKeys")
 
 
 
-
-
-
 allClearBtn.addEventListener("click", clearBtn)
 deleteBtn.addEventListener("click", removeBtn)
 
+
+decimalPoint.addEventListener("click", addDecimal)
+
+function addDecimal() {
+  if(!numberDisplay.innerText.includes(".")){
+    numberDisplay.innerText += "."
+  }
+}
 
 function clearBtn() {
   numberDisplay.innerText = '';
@@ -65,7 +71,6 @@ function displayNums(event) {
   }
 
 }
-
 
 
 operatorButtons.forEach(function(button){
@@ -114,11 +119,11 @@ function output() {
         }
 
         if (displayResult.length > 10) {
-          displayResult = result.toExponential(2); // Use scientific notation
+          displayResult = result.toExponential(2);
         }
   
         numberDisplay.innerText = displayResult;
-        inputValue = result.toString(); // Save for next use
+        inputValue = result.toString(); 
         hasError = false;
       }
   
