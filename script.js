@@ -1,3 +1,11 @@
+let inputValue = '';
+let secondinputValue = '';
+let operatorValue = '';
+
+
+
+
+
 const numberDisplay = document.getElementById("numDisplay")
 const allClearBtn = document.getElementById("allClearButton")
 const deleteBtn = document.getElementById("deleteButton")
@@ -7,8 +15,6 @@ const equalsTo = document.getElementById("equalsTo")
 const numericKeys = document.querySelectorAll(".numericKeys")
 const operatorButtons = document.querySelectorAll(".operatorKeys")
 
-// operator function
-const divideBtn = document.getElementById("divide")
 
 
 
@@ -29,6 +35,8 @@ function removeBtn() {
     
 }
 
+
+
 numericKeys.forEach(function(button) {
   button.addEventListener("click", displayNums);
 });
@@ -36,112 +44,64 @@ numericKeys.forEach(function(button) {
 
 function displayNums(event) {
   if(numberDisplay.innerText.length < 10){
-    numberDisplay.innerText += event.target.textContent
+    numberDisplay.innerText += event.target.textContent;
+    
+    if (operatorValue == '') {
+      inputValue = numberDisplay.innerText;
+    } else {
+      secondinputValue = numberDisplay.innerText;
+    }
+
   }
-  
+
 }
 
 
 
+operatorButtons.forEach(function(button){
+  button.addEventListener("click", displayOperator)
+});
 
 
-
-
-
-
-
-
-
-
-
-
-
-let inputValue = '';
-let secondinputValue = '';
-let operatorValue = '';
-let resultDisplayed = false;
-
+function displayOperator(event){
+  if (inputValue !== "" && operatorValue === ""){
+    operatorValue = event.target.textContent;
+    numberDisplay.innerText = '';
+  }
+}
 
 
 equalsTo.addEventListener("click", output)
 
 
+function output() {
+  if (inputValue !== "" && operatorValue !== "" && secondinputValue !== "") {
+      const num1 = Number(inputValue);
+      const num2 = Number(secondinputValue);
+      let result;
 
-operatorButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      if (inputValue !== "" && operatorValue === "") {
-        operatorValue = btn.innerText;
+      if (operatorValue === "+") {
+          result = num1 + num2;
+      } else if (operatorValue === "-") {
+          result = num1 - num2;
+      } else if (operatorValue === "*") {
+          result = Number((num1 * num2).toFixed(2));
+      } else if (operatorValue === "/") {
+          result = num2 !== 0 ? Number((num1 / num2).toFixed(2)) : "Error";
       }
-    });
-  });
 
+      numberDisplay.innerText = result;
+  
 
-
-
-
-function output(){
-    if (inputValue !== "" && operatorValue !== "" && secondinputValue !== "") {
-        const num1 = Number(inputValue);
-        const num2 = Number(secondinputValue);
-        let result;
-
-        if (operatorValue === "+") {
-            result = num1 + num2;
-          } else if (operatorValue === "-") {
-            result = num1 - num2;
-          } else if (operatorValue === "*") {
-            result = num1 * num2;
-          } else if (operatorValue === "/") {
-            result = num2 !== 0 ? num1 / num2 : "Error";
-        }
-
-
-        result = numberDisplay.innerText
-
-    
-
+    if(result !== "Error"){
+      inputValue = result.toString();
+    } else{
+      inputValue = '';
     }
 
+    secondinputValue = '';
+    operatorValue = '';
+
+  }
 }
-
-
-
-
-function showSeven(){
-    if (resultDisplayed) {
-        inputValue = "";
-        resultDisplayed = false;
-    }
-
-    if (numberDisplay.innerText.length < 11) {
-        numberDisplay.innerText += "7";
-      
-        if (operatorValue === "") {
-          inputValue = numberDisplay.innerText;
-        } else {
-          secondinputValue = numberDisplay.innerText;
-        }
-    }
-      
-
-}
-
-function showEight(){
-    if (resultDisplayed) {
-        inputValue = "";
-        resultDisplayed = false;
-    }
-
-    if (numberDisplay.innerText.length < 11) {
-        numberDisplay.innerText += "8";
-      
-        if (operatorValue === "") {
-          inputValue = numberDisplay.innerText;
-        } else {
-          secondinputValue = numberDisplay.innerText;
-        }
-    }
-      
-}
-
 
