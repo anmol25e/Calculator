@@ -19,16 +19,16 @@ body {
 }
 
 .right-links ul {
-    display: flex;            /* Places list items in a row */
-    list-style: none;         /* Removes bullets */
+    display: flex;           
+    list-style: none;         
     padding: 0;
     margin: 0;
-    gap: 16px;                /* Adds space between items */
+    gap: 16px;                
 }
 
 .right-links li a {
-    text-decoration: none;    /* Optional: removes underline */
-    color: black;             /* Optional: sets link color */
+    text-decoration: none;    
+    color: black;            
     font-weight: bold;
 }
 
@@ -37,7 +37,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(223, 122, 0);
+    background-color: rgb(0, 0, 0);
     height: 790px;
     
 }
