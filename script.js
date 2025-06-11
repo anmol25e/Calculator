@@ -5,9 +5,6 @@ let hasError = false;
 
 
 
-
-
-
 const numberDisplay = document.getElementById("numDisplay")
 const allClearBtn = document.getElementById("allClearButton")
 const deleteBtn = document.getElementById("deleteButton")
