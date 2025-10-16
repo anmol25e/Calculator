@@ -44,7 +44,7 @@ body {
 .calculator{
     display: flex;
     flex-direction: column;
-    background-color: rgb(117, 116, 119);
+    background-color: rgb(109, 202, 214);
     height: 450px;
     width: 280px;
     max-width: 300px;
@@ -52,6 +52,7 @@ body {
     column-gap: 16px;
     row-gap: 16px;
     align-items: center;
+    border-radius: 15px;
 
 
 }
@@ -61,7 +62,8 @@ body {
     background-color: rgb(255, 255, 255);
     height: 95px;
     width: 280px;
-    justify-content: flex-end;  
+    justify-content: flex-end;
+    border-radius: 15px;
     /* flex end for numbers in the display */
 
 }
